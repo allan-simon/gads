@@ -20,7 +20,11 @@ func (nagc NegativeAdGroupCriterion) MarshalXML(e *xml.Encoder, start xml.StartE
 	)
 	e.EncodeToken(start)
 	e.EncodeElement(&nagc.AdGroupId, xml.StartElement{Name: xml.Name{"", "adGroupId"}})
-	criterionMarshalXML(nagc.Criterion, e)
+	e.EncodeElement(
+		&nagc.Criterion,
+		xml.StartElement{xml.Name{"", "criterion"}, []xml.Attr{}},
+	)
+
 	e.EncodeToken(start.End())
 	return nil
 }

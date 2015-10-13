@@ -17,10 +17,10 @@ func TestAdGroupAd(t *testing.T) {
 	adGroupAds, err := agas.Mutate(
 		AdGroupAdOperations{
 			"ADD": {
-				NewTextAd(adGroup.Id, "https://classdo.com/en", "classdo.com", "test headline "+rand_word(10), "test line one", "test line two", "PAUSED"),
-				NewTextAd(adGroup.Id, "https://classdo.com/en", "classdo.com", "test   teStTo "+rand_word(10), "test line one", "test line two", "PAUSED"),
-				NewTextAd(adGroup.Id, "https://classdo.com/en", "classdo.com", "test headline "+rand_word(10), "test line one", "test line two", "PAUSED"),
-				NewTextAd(adGroup.Id, "https://classdo.com/en", "classdo.com", "test headline "+rand_word(10), "test line one", "test line two", "PAUSED"),
+				NewAdGroupTextAd(adGroup.Id, "https://classdo.com/en", "classdo.com", "test headline "+rand_word(10), "test line one", "test line two", "PAUSED"),
+				NewAdGroupTextAd(adGroup.Id, "https://classdo.com/en", "classdo.com", "test   teStTo "+rand_word(10), "test line one", "test line two", "PAUSED"),
+				NewAdGroupTextAd(adGroup.Id, "https://classdo.com/en", "classdo.com", "test headline "+rand_word(10), "test line one", "test line two", "PAUSED"),
+				NewAdGroupTextAd(adGroup.Id, "https://classdo.com/en", "classdo.com", "test headline "+rand_word(10), "test line one", "test line two", "PAUSED"),
 			},
 		},
 	)

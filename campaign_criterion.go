@@ -35,9 +35,10 @@ func (cc CampaignCriterion) MarshalXML(e *xml.Encoder, start xml.StartElement) e
 	e.EncodeToken(start)
 	e.EncodeElement(&cc.CampaignId, xml.StartElement{Name: xml.Name{"", "campaignId"}})
 	e.EncodeElement(&isNegative, xml.StartElement{Name: xml.Name{"", "isNegative"}})
-	if err := criterionMarshalXML(cc.Criterion, e); err != nil {
-		return err
-	}
+	e.EncodeElement(
+		&cc.Criterion,
+		xml.StartElement{xml.Name{"", "criterion"}, []xml.Attr{}},
+	)
 	e.EncodeToken(start.End())
 	return nil
 }
@@ -65,7 +66,10 @@ func (ncc NegativeCampaignCriterion) MarshalXML(e *xml.Encoder, start xml.StartE
 	e.EncodeToken(start)
 	e.EncodeElement(&ncc.CampaignId, xml.StartElement{Name: xml.Name{"", "campaignId"}})
 	e.EncodeElement(&isNegative, xml.StartElement{Name: xml.Name{"", "isNegative"}})
-	criterionMarshalXML(ncc.Criterion, e)
+	e.EncodeElement(
+		&ncc.Criterion,
+		xml.StartElement{xml.Name{"", "criterion"}, []xml.Attr{}},
+	)
 	e.EncodeToken(start.End())
 	return nil
 }

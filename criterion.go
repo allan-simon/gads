@@ -93,6 +93,7 @@ func (c LanguageCriterion) GetID() int64 {
 // TargetingStatus: ACTIVE, OBSOLETE, PHASING_OUT
 // ParentLocations:
 type Location struct {
+	Type            string     `xml:"xsi:type,attr,omitempty"`
 	Id              int64      `xml:"id,omitempty"`
 	LocationName    string     `xml:"locationName,omitempty"`
 	DisplayType     string     `xml:"displayType,omitempty"`
@@ -388,6 +389,11 @@ func criterionUnmarshalXML(dec *xml.Decoder, start xml.StartElement) (Criterion,
 		c.Type = criterionType
 		err := dec.DecodeElement(&c, &start)
 		return c, err
+	case "Location":
+		c := Location{}
+		c.Type = criterionType
+		err := dec.DecodeElement(&c, &start)
+		return c, err
 	case "Vertical":
 		c := VerticalCriterion{}
 		c.Type = criterionType
@@ -405,59 +411,4 @@ func criterionUnmarshalXML(dec *xml.Decoder, start xml.StartElement) (Criterion,
 			return nil, nil
 		}
 	}
-}
-
-func criterionMarshalXML(c Criterion, e *xml.Encoder) error {
-	criterionType := ""
-	switch t := c.(type) {
-	case AdScheduleCriterion:
-		criterionType = "AdSchedule"
-	case AgeRangeCriterion:
-		criterionType = "AgeRange"
-	case CarrierCriterion:
-		criterionType = "Carrier"
-	case ContentLabelCriterion:
-		criterionType = "ContentLabel"
-	case GenderCriterion:
-		criterionType = "Gender"
-	case KeywordCriterion:
-		criterionType = "Keyword"
-	case LanguageCriterion:
-		criterionType = "Language"
-	case Location:
-		criterionType = "Location"
-	case MobileAppCategoryCriterion:
-		criterionType = "MobileAppCategory"
-	case MobileApplicationCriterion:
-		criterionType = "MobileApplication"
-	case MobileDeviceCriterion:
-		criterionType = "MobileDevice"
-	case OperatingSystemVersionCriterion:
-		criterionType = "OperatingSystemVersion"
-	case PlacementCriterion:
-		criterionType = "Placement"
-	case PlatformCriterion:
-		criterionType = "Platform"
-	case ProductCriterion:
-		criterionType = "Product"
-	case ProximityCriterion:
-		criterionType = "Proximity"
-	case UserInterestCriterion:
-		criterionType = "CriterionUserInterest"
-	case UserListCriterion:
-		criterionType = "CriterionUserList"
-	case VerticalCriterion:
-		criterionType = "Vertical"
-	case WebpageCriterion:
-		criterionType = "Webpage"
-	default:
-		return fmt.Errorf("unknown criterion type %#v\n", t)
-	}
-	e.EncodeElement(&c, xml.StartElement{
-		xml.Name{"", "criterion"},
-		[]xml.Attr{
-			xml.Attr{xml.Name{"http://www.w3.org/2001/XMLSchema-instance", "type"}, criterionType},
-		},
-	})
-	return nil
 }

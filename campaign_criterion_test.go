@@ -17,13 +17,23 @@ func TestCampaignCriterion(t *testing.T) {
 	campaignCriterions, err := ccs.Mutate(
 		CampaignCriterionOperations{
 			"ADD": {
-				CampaignCriterion{CampaignId: campaign.Id, Criterion: AdScheduleCriterion{DayOfWeek: "MONDAY", StartHour: "10", StartMinute: "ZERO", EndHour: "13", EndMinute: "ZERO"}},
-				CampaignCriterion{CampaignId: campaign.Id, Criterion: Location{Id: 2392}},
-				NegativeCampaignCriterion{CampaignId: campaign.Id, Criterion: KeywordCriterion{Text: rand_str(10), MatchType: "EXACT"}},
-				NegativeCampaignCriterion{CampaignId: campaign.Id, Criterion: KeywordCriterion{Text: rand_str(10), MatchType: "EXACT"}},
-				NegativeCampaignCriterion{CampaignId: campaign.Id, Criterion: KeywordCriterion{Text: rand_str(10), MatchType: "EXACT"}},
-				NegativeCampaignCriterion{CampaignId: campaign.Id, Criterion: KeywordCriterion{Text: rand_str(10), MatchType: "EXACT"}},
-				NegativeCampaignCriterion{CampaignId: campaign.Id, Criterion: KeywordCriterion{Text: rand_str(10), MatchType: "EXACT"}},
+				CampaignCriterion{
+					CampaignId: campaign.Id,
+					Criterion: AdScheduleCriterion{
+						Type:        "AdSchedule",
+						DayOfWeek:   "MONDAY",
+						StartHour:   "10",
+						StartMinute: "ZERO",
+						EndHour:     "13",
+						EndMinute:   "ZERO",
+					},
+				},
+				CampaignCriterion{CampaignId: campaign.Id, Criterion: Location{Type: "Location", Id: 2392}},
+				NegativeCampaignCriterion{CampaignId: campaign.Id, Criterion: KeywordCriterion{Type: "Keyword", Text: rand_str(10), MatchType: "EXACT"}},
+				NegativeCampaignCriterion{CampaignId: campaign.Id, Criterion: KeywordCriterion{Type: "Keyword", Text: rand_str(10), MatchType: "EXACT"}},
+				NegativeCampaignCriterion{CampaignId: campaign.Id, Criterion: KeywordCriterion{Type: "Keyword", Text: rand_str(10), MatchType: "EXACT"}},
+				NegativeCampaignCriterion{CampaignId: campaign.Id, Criterion: KeywordCriterion{Type: "Keyword", Text: rand_str(10), MatchType: "EXACT"}},
+				NegativeCampaignCriterion{CampaignId: campaign.Id, Criterion: KeywordCriterion{Type: "Keyword", Text: rand_str(10), MatchType: "EXACT"}},
 			},
 		},
 	)

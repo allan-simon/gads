@@ -52,7 +52,8 @@ func NewAdGroupTextAd(
 		AdGroupId: adGroupId,
 		Ad: TextAd{
 			CommonAd: CommonAd{
-				URL:        URL,
+				Type:       "TextAd",
+				FinalURLs:  []string{URL},
 				DisplayURL: displayURL,
 			},
 			Headline:     headline,

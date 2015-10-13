@@ -34,35 +34,41 @@ func TestAdGroupCriterion(t *testing.T) {
 					        },
 				*/
 				BiddableAdGroupCriterion{
+					Type:       "BiddableAdGroupCriterion",
 					AdGroupId:  adGroup.Id,
-					Criterion:  KeywordCriterion{Text: "test1", MatchType: "EXACT"},
+					Criterion:  KeywordCriterion{Type: "Keyword", Text: "test1", MatchType: "EXACT"},
 					UserStatus: "PAUSED",
 				},
 				BiddableAdGroupCriterion{
+					Type:       "BiddableAdGroupCriterion",
 					AdGroupId:  adGroup.Id,
-					Criterion:  KeywordCriterion{Text: "test2", MatchType: "PHRASE"},
+					Criterion:  KeywordCriterion{Type: "Keyword", Text: "test2", MatchType: "PHRASE"},
 					UserStatus: "PAUSED",
 				},
 				BiddableAdGroupCriterion{
+					Type:       "BiddableAdGroupCriterion",
 					AdGroupId:  adGroup.Id,
-					Criterion:  KeywordCriterion{Text: "test3", MatchType: "BROAD"},
+					Criterion:  KeywordCriterion{Type: "Keyword", Text: "test3", MatchType: "BROAD"},
 					UserStatus: "PAUSED",
 				},
 				NegativeAdGroupCriterion{
 					AdGroupId: adGroup.Id,
-					Criterion: KeywordCriterion{Text: "test4", MatchType: "BROAD"},
+					Criterion: KeywordCriterion{Type: "Keyword", Text: "test4", MatchType: "BROAD"},
 				},
 				BiddableAdGroupCriterion{
+					Type:       "BiddableAdGroupCriterion",
 					AdGroupId:  adGroup.Id,
-					Criterion:  PlacementCriterion{Url: "https://classdo.com"},
+					Criterion:  PlacementCriterion{Type: "Placement", Url: "https://classdo.com"},
 					UserStatus: "PAUSED",
 				},
 				// NewBiddableAdGroupCriterion(adGroup.Id, NewUserInterestCriterion()),
 				// NewBiddableAdGroupCriterion(adGroup.Id, NewUserListCriterion()),
 				// NewBiddableAdGroupCriterion(adGroup.Id, NewVerticalCriterion(0, 0, []string{"Pets & Anamals","Pets","Dogs"})),
 				BiddableAdGroupCriterion{
+					Type:      "BiddableAdGroupCriterion",
 					AdGroupId: adGroup.Id,
 					Criterion: WebpageCriterion{
+						Type: "Webpage",
 						Parameter: WebpageParameter{
 							CriterionName: "test criterion",
 							Conditions: []WebpageCondition{
