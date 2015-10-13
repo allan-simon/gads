@@ -21,6 +21,11 @@ type ServiceUrl struct {
 	Name string
 }
 
+type AWQLQuery struct {
+	XMLName xml.Name
+	Query   string `xml:"query"`
+}
+
 // exceptions
 var (
 	ERROR_NOT_YET_IMPLEMENTED = fmt.Errorf("Not yet implemented")
@@ -115,6 +120,10 @@ type Selector struct {
 	DateRange  *DateRange  `xml:"dateRange,omitempty"`
 	Ordering   []OrderBy   `xml:"ordering"`
 	Paging     *Paging     `xml:"paging,omitempty"`
+}
+
+type UrlList struct {
+	Urls []string `xml:"urls"`
 }
 
 // error parsers

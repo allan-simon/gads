@@ -237,5 +237,5 @@ func (s *CampaignCriterionService) Mutate(campaignCriterionOperations CampaignCr
 }
 
 func (s *CampaignCriterionService) Query(query string) (campaignCriterions CampaignCriterions, err error) {
-	return campaignCriterions, err
+	return campaignCriterions, ERROR_NOT_YET_IMPLEMENTED
 }

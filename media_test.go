@@ -58,11 +58,12 @@ func TestMedia(t *testing.T) {
 		)
 		if err != nil {
 			fmt.Printf("Error occured finding medias")
+			t.Fatal(err)
 		}
 		for _, m := range medias {
 			for _, d := range m.Dimensions {
 				if d.Name == "FULL" {
-					fmt.Printf("Entry ID %d with dimensions %dx%d and MIME type is '%s'\n", m.Id, d.Height, d.Width, m.MimeType)
+					//fmt.Printf("Entry ID %d with dimensions %dx%d and MIME type is '%s'\n", m.Id, d.Height, d.Width, m.MimeType)
 				}
 			}
 		}
@@ -70,7 +71,7 @@ func TestMedia(t *testing.T) {
 		offset += pageSize
 		paging.Offset = offset
 		if totalCount < offset {
-			fmt.Printf("\tFound %d entries.", totalCount)
+			//fmt.Printf("\tFound %d entries.", totalCount)
 			break
 		}
 	}
